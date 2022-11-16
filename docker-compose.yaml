@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+  rsync:
+    restart: unless-stopped
+    build:
+      target: rsync
+    tmpfs:
+      - /run/sshd:mode=0700
+  cifs:
+    restart: unless-stopped
+    build:
+      target: cifs

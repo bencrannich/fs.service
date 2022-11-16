@@ -1,0 +1,27 @@
+version: '3.3'
+services:
+  rsync:
+    volumes:
+    - "/fs/d1/services/fs/ssh/ssh_host_rsa_key:/etc/ssh/ssh_host_rsa_key:ro"
+    - "/fs/d1/services/fs/ssh/ssh_host_rsa_key.pub:/etc/ssh/ssh_host_rsa_key.pub:ro"
+    - "/fs/d1/services/fs/ssh/ssh_host_ecdsa_key:/etc/ssh/ssh_host_ecdsa_key:ro"
+    - "/fs/d1/services/fs/ssh/ssh_host_ecdsa_key.pub:/etc/ssh/ssh_host_ecdsa_key.pub:ro"
+    - "/fs/d1/services/fs/ssh/ssh_host_ed25519_key:/etc/ssh/ssh_host_ed25519_key:ro"
+    - "/fs/d1/services/fs/ssh/ssh_host_ed25519_key.pub:/etc/ssh/ssh_host_ed25519_key.pub:ro"
+    - "/etc/passwd:/etc/passwd:ro"
+    - "/etc/shadow:/etc/shadow:ro"
+    - "/etc/group:/etc/group:ro"
+    - "/etc/gshadow:/etc/gshadow:ro"
+    - "/fs:/fs"
+    ports:
+    - "192.168.100.14:22:22/tcp"
+  cifs:
+    volumes:
+    - "/etc/passwd:/etc/passwd:ro"
+    - "/etc/shadow:/etc/shadow:ro"
+    - "/etc/group:/etc/group:ro"
+    - "/etc/gshadow:/etc/gshadow:ro"
+    - "/fs:/fs"
+    ports:
+    - "192.168.100.14:139:139/tcp"
+    - "192.168.100.14:445:445/tcp"
