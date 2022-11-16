@@ -16,7 +16,7 @@ ONBUILD RUN apt-get update
 
 FROM base AS rsync
 
-RUN apt-get install -y openssh-server rsync
+RUN apt-get install -y openssh-server rsync zsh
 RUN rm -vf /etc/ssh/ssh_host_*_key /etc/ssh/ssh_host_*_key.pub
 
 CMD ["/usr/sbin/sshd", "-D", "-e"]
